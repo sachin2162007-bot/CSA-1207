@@ -1,0 +1,9 @@
+MVI A, 05H
+MOV B, A       
+MVI C, 02H     
+MVI D, 00H
+LOOP: ADD B    
+DCR C
+JNZ LOOP  
+MOV D, A      
+HLT

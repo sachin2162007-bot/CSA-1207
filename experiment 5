@@ -1,0 +1,19 @@
+LXI H, 8050 
+MOV D, M      
+INX H
+MOV E, M      
+
+LXI H, 8052   
+MOV B, M    
+INX H
+MOV C, M      
+
+MOV A, D      
+ADD B
+MOV L, A      
+MOV A, E      
+ADC C
+MOV H, A     
+
+SHLD 8054     
+HLT

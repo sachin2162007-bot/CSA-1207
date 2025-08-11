@@ -1,0 +1,43 @@
+LXI H, 8050H
+
+MoV C, M
+
+DCR C
+
+LOOPI: LXI H, 8051H
+
+MOV B,C
+
+LOOP2: MOV A,M
+
+INX H
+
+
+CMP M
+
+
+JC SKIP
+
+
+
+MOV D,M
+
+MOV M,A
+
+DCX H
+
+MOV M,D
+
+INX H
+
+MOV M,D
+
+SKIP DCR B
+
+JNZ LOOP 2
+
+DCR C
+
+JNZ LOOPI
+
+HLT.

@@ -1,0 +1,31 @@
+LXI H, 8050H  
+MOV A, M      
+MOV B, A      
+MOV A, M      
+MOV C, A      
+
+CMP C         
+JC MOV_E      
+MOV D, B      
+JMP BEGIN     
+
+MOV_E: MOV E, C 
+BEGIN: MOV A, D  
+LOOP1: SUB B     
+JC INCR       
+JZ STEP2      
+JMP LOOP1     
+STEP2: MOV A, D 
+MOV E,A      
+SUB C         
+JZ STORE    
+JMP LOOP2    
+
+INCR: MOV A, D  
+INR A         
+MOV D, A      
+JMP BEGIN     
+
+STORE: LXI H,8052H 
+MOV M, A      
+HLT           

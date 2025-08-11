@@ -1,0 +1,14 @@
+LXI H, 8050H    ; Load address of decimal number
+MOV A, M        ; Load number into accumulator
+MVI C, 08H      ; Set counter for 8 bits
+LXI D, 8051H    ; DE will point to output location
+
+NEXT_BIT: MOV B, A
+ANI 01H
+MOV M, A        ; Store LSB (0 or 1) at current DE
+INX D           ; Move to next output address
+MOV A, B
+RAR             ; Rotate right (to bring next bit to LSB)
+DCR C
+JNZ NEXT_BIT
+HLT

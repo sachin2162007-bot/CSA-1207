@@ -1,0 +1,39 @@
+LxI H, 8050
+
+Mov D,M
+
+Inx H
+
+MOV E, M
+
+LDA 8052
+
+MOV C,A
+
+MVI B,00
+
+LOOP: MOV A, D
+
+SUB C
+
+JC END
+
+MOV D,A
+
+MOV A,E
+
+SBB B00
+
+MOV E, A
+
+INR B
+
+JMP LOOP
+
+END: STA 8055
+
+MoV A,B
+
+STA 8054
+
+HLT
